@@ -18,10 +18,10 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/Tolyar/pulumi-acme/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/Tolyar/pulumi-acme/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/vancluever/terraform-provider-acme/v2/acme"
 )
@@ -92,7 +92,7 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -105,13 +105,13 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-            "acme_certificate": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate")},
-            "acme_registration": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Registration")},
+			"acme_certificate":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate")},
+			"acme_registration": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Registration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
-			"acme_certificate": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCertificate")},
+			"acme_certificate":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCertificate")},
 			"acme_registration": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRegistration")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
