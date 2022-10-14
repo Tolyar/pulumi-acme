@@ -2,7 +2,7 @@ PROJECT_NAME := acme Package
 
 SHELL            := /bin/bash
 PACK             := acme
-ORG              := pulumi
+ORG              := Tolyar
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}
