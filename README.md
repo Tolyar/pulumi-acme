@@ -370,7 +370,7 @@ builds:
   - linux
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-acme/provider/pkg/version.Version={{.Tag}}
+  - -X github.com/Tolyar/pulumi-acme/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-acme/
   sort: asc
   use: git
