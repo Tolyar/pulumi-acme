@@ -80,7 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/Tolyar/pulumi-acme",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
+		GitHubOrg: "vancluever",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -105,11 +105,14 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+            "acme_certificate": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate")},
+            "acme_registration": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Registration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"acme_certificate": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCertificate")},
+			"acme_registration": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRegistration")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
